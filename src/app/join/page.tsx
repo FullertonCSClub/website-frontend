@@ -6,7 +6,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 export default function JoinPage() {
   // Replace these URLs with your actual Discord invite and Google Form URLs
   const discordInviteUrl = "https://discord.gg/6b26MBFh";
-  const googleFormUrl = "https://forms.google.com/your-form-id";
+  const googleFormUrl = "https://airtable.com/appGFcx5sFvmm2r7R/pagnfnKddlUXOGuZf/form";
 
   return (
     <div className="container mx-auto px-4 py-12 md:py-24">
