@@ -31,12 +31,12 @@ export default function Home() {
                     key={index}
                     className="absolute rounded-full bg-blue-500/20"
                     style={{
-                      width: `${Math.random() * 6 + 2}px`,
-                      height: `${Math.random() * 6 + 2}px`,
-                      top: `${Math.random() * 100}%`,
-                      left: `${Math.random() * 100}%`,
-                      animation: `float ${Math.random() * 10 + 10}s linear infinite`,
-                      animationDelay: `${Math.random() * 5}s`
+                      width: `${(index % 5) + 2}px`,
+                      height: `${(index % 5) + 2}px`,
+                      top: `${(index * 5) % 100}%`,
+                      left: `${(index * 7) % 100}%`,
+                      animation: `float ${(index % 5) + 10}s linear infinite`,
+                      animationDelay: `${index * 0.25}s`
                     }}
                   ></div>
                 ))}
@@ -50,21 +50,23 @@ export default function Home() {
           <div className="absolute bottom-20 right-1/3 h-40 w-40 rounded-full bg-cyan-600/20 blur-3xl animate-pulse-glow animation-delay-4000"></div>
           
           {/* Code Lines Animation */}
-          <div className="absolute inset-0 opacity-10">
-            {Array.from({ length: 10 }).map((_, index) => (
-              <div 
-                key={index}
-                className="absolute h-px bg-gradient-to-r from-transparent via-blue-500 to-transparent"
-                style={{
-                  top: `${index * 10 + Math.random() * 5}%`,
-                  left: 0,
-                  right: 0,
-                  animation: `shimmer ${Math.random() * 5 + 5}s linear infinite`,
-                  animationDelay: `${Math.random() * 5}s`
-                }}
-              ></div>
-            ))}
-          </div>
+          {mounted && (
+            <div className="absolute inset-0 opacity-10">
+              {Array.from({ length: 10 }).map((_, index) => (
+                <div 
+                  key={index}
+                  className="absolute h-px bg-gradient-to-r from-transparent via-blue-500 to-transparent"
+                  style={{
+                    top: `${index * 10 + 2}%`,
+                    left: 0,
+                    right: 0,
+                    animation: `shimmer ${(index % 5) + 5}s linear infinite`,
+                    animationDelay: `${index * 0.5}s`
+                  }}
+                ></div>
+              ))}
+            </div>
+          )}
         </div>
         
         <div className="container relative z-10 mx-auto px-4 flex flex-col md:flex-row items-center justify-between">
@@ -151,13 +153,13 @@ export default function Home() {
                       key={`code-${index}`}
                       className="absolute text-[8px] font-mono text-blue-500/30"
                       style={{
-                        top: `${Math.random() * 100}%`,
-                        left: `${Math.random() * 100}%`,
-                        animation: `float ${Math.random() * 10 + 15}s linear infinite`,
-                        animationDelay: `${Math.random() * 5}s`
+                        top: `${(index * 5) % 100}%`,
+                        left: `${(index * 7) % 100}%`,
+                        animation: `float ${(index % 5) + 15}s linear infinite`,
+                        animationDelay: `${index * 0.25}s`
                       }}
                     >
-                      {Math.random() > 0.5 ? '1' : '0'}
+                      {index % 2 === 0 ? '1' : '0'}
                     </div>
                   ))}
                 </>
@@ -580,12 +582,12 @@ export default function Home() {
                 key={index}
                 className="absolute rounded-full bg-white/10"
                 style={{
-                  width: `${Math.random() * 6 + 2}px`,
-                  height: `${Math.random() * 6 + 2}px`,
-                  top: `${Math.random() * 100}%`,
-                  left: `${Math.random() * 100}%`,
-                  animation: `float ${Math.random() * 10 + 10}s linear infinite`,
-                  animationDelay: `${Math.random() * 5}s`
+                  width: `${(index % 5) + 2}px`,
+                  height: `${(index % 5) + 2}px`,
+                  top: `${(index * 5) % 100}%`,
+                  left: `${(index * 7) % 100}%`,
+                  animation: `float ${(index % 5) + 10}s linear infinite`,
+                  animationDelay: `${index * 0.25}s`
                 }}
               ></div>
             ))}
