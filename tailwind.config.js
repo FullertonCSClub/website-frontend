@@ -67,41 +67,64 @@ module.exports = {
         },
         float: {
           '0%, 100%': { transform: 'translateY(0)' },
-          '50%': { transform: 'translateY(-20px)' },
-        },
-        'pulse-glow': {
-          '0%, 100%': { opacity: '0.6', filter: 'blur(8px)' },
-          '50%': { opacity: '0.8', filter: 'blur(12px)' },
-        },
-        blob: {
-          '0%': { transform: 'translate(0px, 0px) scale(1)' },
-          '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
-          '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
-          '100%': { transform: 'translate(0px, 0px) scale(1)' },
-        },
-        'spin-slow': {
-          '0%': { transform: 'rotate(0deg)' },
-          '100%': { transform: 'rotate(360deg)' },
+          '50%': { transform: 'translateY(-10px)' },
         },
         shimmer: {
-          '0%': { backgroundPosition: '-200% 0' },
-          '100%': { backgroundPosition: '200% 0' },
+          '0%': { transform: 'translateX(-100%)' },
+          '100%': { transform: 'translateX(100%)' },
         },
-        'gradient-shift': {
-          '0%': { backgroundPosition: '0% 50%' },
-          '50%': { backgroundPosition: '100% 50%' },
-          '100%': { backgroundPosition: '0% 50%' },
+        "pulse-glow": {
+          '0%, 100%': { opacity: 0.6 },
+          '50%': { opacity: 1 },
+        },
+        typing: {
+          '0%': { width: '0%' },
+          '100%': { width: '100%' },
+        },
+        "gradient-shift": {
+          '0%': { 'background-position': '0% 50%' },
+          '50%': { 'background-position': '100% 50%' },
+          '100%': { 'background-position': '0% 50%' },
+        },
+        blob: {
+          "0%": {
+            transform: "translate(0px, 0px) scale(1)",
+          },
+          "33%": {
+            transform: "translate(30px, -50px) scale(1.1)",
+          },
+          "66%": {
+            transform: "translate(-20px, 20px) scale(0.9)",
+          },
+          "100%": {
+            transform: "translate(0px, 0px) scale(1)",
+          },
         },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         "float": "float 6s ease-in-out infinite",
-        "pulse-glow": "pulse-glow 3s ease-in-out infinite",
-        "blob": "blob 7s infinite",
-        "spin-slow": "spin-slow 10s linear infinite",
-        "shimmer": "shimmer 2s infinite",
+        "shimmer": "shimmer 3s ease-in-out infinite",
+        "pulse-glow": "pulse-glow 4s ease-in-out infinite",
+        "typing": "typing 3.5s steps(40, end)",
         "gradient-shift": "gradient-shift 8s ease infinite",
+        "blob": "blob 7s infinite",
+        "spin-slow": "spin 15s linear infinite",
+      },
+      backgroundImage: {
+        'radial-gradient': 'radial-gradient(circle at center, rgba(59, 130, 246, 0.3) 0%, rgba(30, 64, 175, 0) 70%)',
+      },
+      transitionDelay: {
+        '2000': '2000ms',
+        '4000': '4000ms',
+      },
+      rotate: {
+        'x-15': 'rotateX(15deg)',
+        'y-15': 'rotateY(15deg)',
+      },
+      perspective: {
+        '800': '800px',
       },
     },
   },
