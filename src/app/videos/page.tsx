@@ -20,6 +20,11 @@ interface VideoItem {
   isPlaylist?: boolean;
 }
 
+// Define the category interface
+interface Category {
+  id: string;
+}
+
 // Mock video data - this would typically come from an API
 const VIDEOS: VideoItem[] = [
   {
@@ -98,14 +103,14 @@ const VIDEOS: VideoItem[] = [
 ];
 
 // Categories for filtering
-const CATEGORIES = [
-  "All",
-  "Web Development",
-  "Algorithms",
-  "Backend",
-  "Machine Learning",
-  "Tools",
-  "Mobile Development"
+const CATEGORIES: Category[] = [
+  { id: "All" },
+  { id: "Web Development" },
+  { id: "Algorithms" },
+  { id: "Backend" },
+  { id: "Machine Learning" },
+  { id: "Tools" },
+  { id: "Mobile Development" }
 ];
 
 export default function VideosPage() {
@@ -212,15 +217,15 @@ export default function VideosPage() {
             <div className="flex flex-wrap gap-2 justify-center">
               {CATEGORIES.map((category) => (
                 <button
-                  key={category}
-                  onClick={() => setSelectedCategory(category)}
+                  key={category.id}
+                  onClick={() => setSelectedCategory(category.id)}
                   className={`px-4 py-2 text-sm rounded-full transition-all duration-300 ${
-                    selectedCategory === category
+                    selectedCategory === category.id
                       ? "bg-blue-600 text-white"
                       : "bg-gray-900/50 text-gray-300 hover:bg-gray-800"
                   }`}
                 >
-                  {category}
+                  {category.id}
                 </button>
               ))}
             </div>
