@@ -222,7 +222,7 @@ export default function ProblemPage({ params }: { params: Promise<{ id: string }
       const result = await evaluateCode(code, language, problem.id);
       setSubmissionResult(result);
       setSubmissionStatus(result.success ? 'success' : 'error');
-    } catch (_) {
+    } catch {
       setSubmissionResult({ 
         success: false, 
         message: "An error occurred during evaluation", 
