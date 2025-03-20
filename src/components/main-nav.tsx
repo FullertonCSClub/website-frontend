@@ -31,19 +31,17 @@ export function MainNav() {
           <NavigationMenuContent>
             <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] bg-[#1e293b] border border-gray-700">
               <li className="row-span-3">
-                <NavigationMenuLink asChild>
-                  <a
-                    className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-blue-600/50 to-blue-600 p-6 no-underline outline-none focus:shadow-md relative z-10 cursor-pointer"
-                    href="/problems"
-                  >
-                    <div className="mb-2 mt-4 text-lg font-medium text-white">
-                      Problem Solving
-                    </div>
-                    <p className="text-sm leading-tight text-white/90">
-                      Challenge yourself with coding problems and improve your skills.
-                    </p>
-                  </a>
-                </NavigationMenuLink>
+                <Link
+                  className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-blue-600/50 to-blue-600 p-6 no-underline outline-none focus:shadow-md relative z-10 cursor-pointer"
+                  href="/problems"
+                >
+                  <div className="mb-2 mt-4 text-lg font-medium text-white">
+                    Problem Solving
+                  </div>
+                  <p className="text-sm leading-tight text-white/90">
+                    Challenge yourself with coding problems and improve your skills.
+                  </p>
+                </Link>
               </li>
               <li>
                 <Link href="/problems?difficulty=easy" legacyBehavior passHref>

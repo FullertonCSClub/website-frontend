@@ -3,13 +3,10 @@
 import React, { useState, useEffect, use } from "react";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Separator } from "@/components/ui/separator";
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { CheckCircle, AlertCircle, Clock } from "lucide-react";
 
 // Define types for our problem data
@@ -225,7 +222,7 @@ export default function ProblemPage({ params }: { params: Promise<{ id: string }
       const result = await evaluateCode(code, language, problem.id);
       setSubmissionResult(result);
       setSubmissionStatus(result.success ? 'success' : 'error');
-    } catch (error) {
+    } catch (_) {
       setSubmissionResult({ 
         success: false, 
         message: "An error occurred during evaluation", 
