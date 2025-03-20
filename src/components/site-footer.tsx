@@ -87,7 +87,7 @@ export function SiteFooter() {
                 </a>
               </li>
               <li>
-                <a href="https://linkedin.com/company/fullertoncsclub" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white">
+                <a href="https://www.linkedin.com/company/fullerton-college-computer-science-club/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white">
                   LinkedIn
                 </a>
               </li>
