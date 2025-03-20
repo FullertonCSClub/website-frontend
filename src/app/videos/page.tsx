@@ -4,6 +4,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { useState, useEffect, useRef } from "react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
+import Image from 'next/image';
 
 // Define the video interface
 interface VideoItem {
@@ -258,11 +259,13 @@ export default function VideosPage() {
                     {/* Thumbnail Image */}
                     <div className="absolute inset-0 bg-gradient-to-br from-blue-900/80 to-purple-900/80 group-hover:scale-105 transition-transform duration-500">
                       {/* Add an image element for the thumbnail */}
-                      <img 
+                      <Image 
                         src={video.thumbnail} 
                         alt={`Thumbnail for ${video.title}`}
                         className="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-all duration-500 transform group-hover:scale-105"
                         loading="lazy"
+                        fill
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                         onError={(e) => {
                           // Fallback if image fails to load
                           const target = e.target as HTMLImageElement;

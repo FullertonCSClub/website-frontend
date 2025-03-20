@@ -73,7 +73,7 @@ export default function JoinPage() {
               </div>
               <CardTitle className="text-2xl">Register with School</CardTitle>
               <CardDescription className="text-base mt-2">
-                Submit your information to our school's club documentation system.
+                Submit your information to our school&apos;s club documentation system.
               </CardDescription>
             </CardHeader>
             <CardContent className="text-center">
@@ -105,7 +105,7 @@ export default function JoinPage() {
 
         <div className="mt-16 text-center">
           <p className="text-muted-foreground mb-6">
-            By joining our club, you'll gain access to exclusive resources, workshops, and networking opportunities.
+            By joining our club, you&apos;ll gain access to exclusive resources, workshops, and networking opportunities.
           </p>
           <Link href="/" className="inline-flex items-center justify-center h-10 py-2 px-4 rounded-md border border-primary text-primary hover:bg-primary hover:text-white transition-colors">
             Back to Home

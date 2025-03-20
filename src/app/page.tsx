@@ -2,8 +2,6 @@
 
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useEffect, useState } from "react";
 
 export default function Home() {
@@ -111,7 +109,7 @@ export default function Home() {
                         {/* Code Animation */}
                         <div className="w-full h-full opacity-70 flex flex-col justify-start items-start p-2 text-[6px] md:text-[8px] font-mono text-blue-300 overflow-hidden">
                           <div className="animate-typing">
-                            <span className="text-purple-300">import</span> React <span className="text-purple-300">from</span> <span className="text-green-300">'react'</span>;
+                            <span className="text-purple-300">import</span> React <span className="text-purple-300">from</span> <span className="text-green-300">&apos;react&apos;</span>;
                           </div>
                           <div className="animate-typing animation-delay-500">
                             <span className="text-purple-300">function</span> <span className="text-yellow-300">App</span>() {'{'}

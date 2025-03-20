@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import Link from "next/link";
 import { Button } from "@/components/ui/button";
 
 export default function AboutPage() {
@@ -54,7 +53,7 @@ export default function AboutPage() {
                 We believe in learning by doing, which is why we organize regular coding workshops, hackathons, and project showcases throughout the academic year.
               </p>
               <p className="text-gray-300">
-                Whether you're a beginner just starting your coding journey or an experienced developer looking to share your knowledge, our club provides resources, mentorship, and a supportive community to help you grow.
+                Whether you&apos;re a beginner just starting your coding journey or an experienced developer looking to share your knowledge, our club provides resources, mentorship, and a supportive community to help you grow.
               </p>
             </div>
             <div className="relative rounded-xl overflow-hidden">

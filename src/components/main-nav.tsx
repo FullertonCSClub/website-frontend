@@ -33,7 +33,7 @@ export function MainNav() {
               <li className="row-span-3">
                 <NavigationMenuLink asChild>
                   <a
-                    className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-blue-600/50 to-blue-600 p-6 no-underline outline-none focus:shadow-md"
+                    className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-blue-600/50 to-blue-600 p-6 no-underline outline-none focus:shadow-md relative z-10 cursor-pointer"
                     href="/problems"
                   >
                     <div className="mb-2 mt-4 text-lg font-medium text-white">
@@ -46,8 +46,8 @@ export function MainNav() {
                 </NavigationMenuLink>
               </li>
               <li>
-                <Link href="/problems/easy" legacyBehavior passHref>
-                  <NavigationMenuLink className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-gray-800 hover:text-white focus:bg-gray-800 focus:text-white">
+                <Link href="/problems?difficulty=easy" legacyBehavior passHref>
+                  <NavigationMenuLink className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-gray-800 hover:text-white focus:bg-gray-800 focus:text-white relative z-10 cursor-pointer">
                     <div className="text-sm font-medium leading-none">Easy Problems</div>
                     <p className="line-clamp-2 text-sm leading-snug text-gray-400">
                       Start with beginner-friendly coding challenges.
@@ -56,8 +56,8 @@ export function MainNav() {
                 </Link>
               </li>
               <li>
-                <Link href="/problems/medium" legacyBehavior passHref>
-                  <NavigationMenuLink className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-gray-800 hover:text-white focus:bg-gray-800 focus:text-white">
+                <Link href="/problems?difficulty=medium" legacyBehavior passHref>
+                  <NavigationMenuLink className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-gray-800 hover:text-white focus:bg-gray-800 focus:text-white relative z-10 cursor-pointer">
                     <div className="text-sm font-medium leading-none">Medium Problems</div>
                     <p className="line-clamp-2 text-sm leading-snug text-gray-400">
                       Intermediate challenges to test your problem-solving skills.
@@ -66,8 +66,8 @@ export function MainNav() {
                 </Link>
               </li>
               <li>
-                <Link href="/problems/hard" legacyBehavior passHref>
-                  <NavigationMenuLink className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-gray-800 hover:text-white focus:bg-gray-800 focus:text-white">
+                <Link href="/problems?difficulty=hard" legacyBehavior passHref>
+                  <NavigationMenuLink className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-gray-800 hover:text-white focus:bg-gray-800 focus:text-white relative z-10 cursor-pointer">
                     <div className="text-sm font-medium leading-none">Hard Problems</div>
                     <p className="line-clamp-2 text-sm leading-snug text-gray-400">
                       Advanced problems for experienced programmers.
