@@ -6,6 +6,59 @@ import { useState, useEffect, useRef } from "react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import Image from 'next/image';
 
+// Function to extract YouTube video ID from various YouTube URL formats
+const extractYoutubeVideoId = (url: string): string | null => {
+  if (!url) return null;
+  
+  // For embedded URLs with playlist
+  if (url.includes('embed/') && url.includes('list=')) {
+    // Extract video ID from embed URL with playlist
+    const embedMatch = url.match(/embed\/([^?&]+)/);
+    return embedMatch && embedMatch[1].length === 11 ? embedMatch[1] : null;
+  }
+  
+  // Handle different YouTube URL formats
+  const regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#&?]*).*/;
+  const match = url.match(regExp);
+  
+  // Extract video ID from URL
+  return (match && match[7].length === 11) ? match[7] : null;
+};
+
+// Function to get YouTube thumbnail URL from video ID
+const getYoutubeThumbnailUrl = (videoUrl: string): string => {
+  const videoId = extractYoutubeVideoId(videoUrl);
+  
+  if (!videoId) {
+    // Fallback thumbnail if video ID can't be extracted
+    return 'https://placehold.co/600x400/1e293b/ffffff?text=CS+Club+Video';
+  }
+  
+  // Try to get the highest quality thumbnail first
+  // YouTube provides several thumbnail options:
+  // maxresdefault.jpg (HD), sddefault.jpg (SD), hqdefault.jpg, mqdefault.jpg, default.jpg
+  return `https://i.ytimg.com/vi/${videoId}/maxresdefault.jpg`;
+};
+
+// Fallback function if the high quality thumbnail fails to load
+const handleThumbnailError = (e: React.SyntheticEvent<HTMLImageElement, Event>, videoId: string | null) => {
+  const target = e.target as HTMLImageElement;
+  if (!videoId) {
+    target.src = 'https://placehold.co/600x400/1e293b/ffffff?text=CS+Club+Video';
+    return;
+  }
+  
+  // Try medium quality thumbnail instead
+  target.src = `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`;
+  
+  // Add another error handler in case the medium quality also fails
+  target.onerror = () => {
+    target.src = 'https://placehold.co/600x400/1e293b/ffffff?text=CS+Club+Video';
+    // Remove error handler to prevent infinite loop
+    target.onerror = null;
+  };
+};
+
 // Define the video interface
 interface VideoItem {
   id: number;
@@ -33,7 +86,7 @@ const VIDEOS: VideoItem[] = [
     title: "React Hooks Tutorial Series",
     description: "Complete tutorial series on React Hooks by Codevolution, covering useState, useEffect, useContext, useReducer, useCallback, useMemo, and custom hooks.",
     duration: "4:13:45",
-    thumbnail: "https://i.ytimg.com/vi/cF2lQ_gZeA8/maxresdefault.jpg",
+    thumbnail: getYoutubeThumbnailUrl("https://www.youtube.com/embed/cF2lQ_gZeA8?list=PLC3y8-rFHvwisvxhZ135pogtX7_Oe3Q3A"),
     videoUrl: "https://www.youtube.com/embed/cF2lQ_gZeA8?list=PLC3y8-rFHvwisvxhZ135pogtX7_Oe3Q3A",
     date: "March 10, 2025",
     category: "Web Development",
@@ -46,7 +99,7 @@ const VIDEOS: VideoItem[] = [
     title: "Data Structures: Arrays vs Linked Lists",
     description: "A deep dive into the differences between arrays and linked lists, with practical examples.",
     duration: "45:22",
-    thumbnail: "https://i.ytimg.com/vi/DuDz6B4cqVc/maxresdefault.jpg",
+    thumbnail: getYoutubeThumbnailUrl("https://www.youtube.com/embed/DuDz6B4cqVc"),
     videoUrl: "https://www.youtube.com/embed/DuDz6B4cqVc",
     date: "February 28, 2025",
     category: "Algorithms",
@@ -58,7 +111,7 @@ const VIDEOS: VideoItem[] = [
     title: "Building APIs with Node.js",
     description: "Step-by-step guide to creating RESTful APIs using Node.js and Express.",
     duration: "58:40",
-    thumbnail: "https://i.ytimg.com/vi/fgTGADljAeg/maxresdefault.jpg",
+    thumbnail: getYoutubeThumbnailUrl("https://www.youtube.com/embed/fgTGADljAeg"),
     videoUrl: "https://www.youtube.com/embed/fgTGADljAeg",
     date: "February 15, 2025",
     category: "Backend",
@@ -70,7 +123,7 @@ const VIDEOS: VideoItem[] = [
     title: "Python for Machine Learning",
     description: "Introduction to Python libraries for machine learning and data analysis.",
     duration: "1:12:33",
-    thumbnail: "https://i.ytimg.com/vi/7eh4d6sabA0/maxresdefault.jpg",
+    thumbnail: getYoutubeThumbnailUrl("https://www.youtube.com/embed/7eh4d6sabA0"),
     videoUrl: "https://www.youtube.com/embed/7eh4d6sabA0",
     date: "January 25, 2025",
     category: "Machine Learning",
@@ -82,7 +135,7 @@ const VIDEOS: VideoItem[] = [
     title: "Git & GitHub Workshop",
     description: "Learn version control with Git and collaboration with GitHub.",
     duration: "48:10",
-    thumbnail: "https://i.ytimg.com/vi/RGOj5yH7evk/maxresdefault.jpg",
+    thumbnail: getYoutubeThumbnailUrl("https://www.youtube.com/embed/RGOj5yH7evk"),
     videoUrl: "https://www.youtube.com/embed/RGOj5yH7evk",
     date: "January 12, 2025",
     category: "Tools",
@@ -94,7 +147,7 @@ const VIDEOS: VideoItem[] = [
     title: "Mobile App Development with React Native",
     description: "Build cross-platform mobile apps using React Native.",
     duration: "1:05:18",
-    thumbnail: "https://i.ytimg.com/vi/0-S5a0eXPoc/maxresdefault.jpg",
+    thumbnail: getYoutubeThumbnailUrl("https://www.youtube.com/embed/0-S5a0eXPoc"),
     videoUrl: "https://www.youtube.com/embed/0-S5a0eXPoc",
     date: "December 18, 2024",
     category: "Mobile Development",
@@ -267,9 +320,9 @@ export default function VideosPage() {
                         fill
                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                         onError={(e) => {
-                          // Fallback if image fails to load
-                          const target = e.target as HTMLImageElement;
-                          target.style.display = 'none';
+                          // Get video ID for fallback thumbnails
+                          const videoId = extractYoutubeVideoId(video.videoUrl);
+                          handleThumbnailError(e, videoId);
                         }}
                       />
                       {/* Add a subtle overlay gradient */}
